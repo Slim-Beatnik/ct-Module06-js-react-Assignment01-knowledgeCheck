@@ -20,9 +20,15 @@
         integrity="sha384-BBtl+eGJRgqQAUMxJ7pMwbEyER4l1g+O15P+16Ep7Q9Q+zqX6gSbd85u4mG4QzX+"
         crossorigin="anonymous"
     ></script>
-
-    <script src="assets/scripts/asyncFetch.js"></script>ript src="assets/scripts/.js"></script>
-    <title>Ambi-Pok&eacute;Dex-trous</title>
+    <script
+        src="https://code.jquery.com/jquery-3.7.1.slim.min.js"
+        integrity="sha256-kmHvs0B+OpCW5GVHUNjv9rOmY0IvSIRcf7zGUDTDQM8="
+        crossorigin="anonymous">
+    </script>
+    <script
+        src="assets/scripts/asyncFetch.js"
+        type="text/javascript">
+    </script>
     <style>
         body {
             text-align: center;
@@ -41,28 +47,54 @@
             width: 100%;
             border-radius: 5px;
         }
+        input {
+            background-color: #2b2d31;
+            text-align: center;
+            color: #ebcc0e !important;
+            font-weight: bold;
+            border-radius: 5px;
+        }
+
+        @media (max-width: 445px) {
+            #title {
+                aspect-ratio: 3;
+                flex-shrink: auto;
+            }
+        }
     </style>
+    <title>Ambi-Pok&eacute;Dex-trous</title>
 </head>
 <body>
     <div class="col-11 justify-center align-items-center mx-auto" id="superContainer">
-        <div class="row col-md-10 col-12 pt-5 mx-auto" id="pokeIntro" style="min-height: 25vh;">
+        <div class="row col-md-10 col-12 py-5 mx-auto" id="pokeIntro" style="min-height: 25vh;">
             <a href="https://fontmeme.com/fonts/pokemon-font/" alt="This will take you to a fun font website">
-                <img class="img-fluid h-100" src="assets/img/ctp.png" alt="pokemon-font">
+                <img class="img-fluid h-100" src="assets/img/ctp.png" alt="pokemon-font" id="title">
             </a>
         </div>
 
-        <form class="row col-md-6 col-12 my-4 mx-auto justify-content-center" id="pokeForm">
-            <input class="row mb-4" type="text" id="pokeman" placeholder="Enter a Pokémon name...">
-            <button class="row btn btn-dark" type="submit" onclick="getPokemonByName(pokeman)">Load That Pok&eacute;Card</button>
+        <form class="row col-md-6 col-12 mb-4 mx-auto justify-content-center d-none" id="pokeForm">
+            <input list="pokemonNames" class="row mb-4 bg-" type="search" id="searchPokemans" placeholder="Enter a Pokémon name...">
+            <!-- over 1000 names populated dynamically from pokemon.txt into options tag -->
+            <datalist id="pokemonNames"></datalist>
+            <button class="row btn btn-dark" for="pokemans" type="submit" onclick="displayPokemon">Load That Pok&eacute;Card</button>
         </form>
             
         <div class="row mx-auto justify-content-center" id="pokeCardContainer" style="min-height: 50vh;">
             <div class="card col-md-6 col-10" id="pokeCard">
-                
+                <figure>
+                    <blockquote class="blockquote">
+                        <p id="loadMessage">Collecting Pok&eacute;balls - we'll let you know when you can search!<br>BRB</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        <cite>Dr. Oak</cite>
+                    </figcaption>
+                </figure>
             </div>
         </div>
 
         <script src="scripts/asyncFetch.js"></script>
     </div>
+    <div class="position-absolute top-0 w-100 h-100 d-none" id="loadingError" style="backdrop-filter: blur(5px);">
+        <img class="img-fluid h-auto z-3 mx-auto" src="assets/img/pngfind.com-derp-png-1106212.png" id="loadingError">
 </body>
 </html>
