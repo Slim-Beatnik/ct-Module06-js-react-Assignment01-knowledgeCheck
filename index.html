@@ -29,7 +29,7 @@
         src="assets/scripts/script.js"
         type="text/javascript">
     </script>
-    <link href="assets/css/style.css" rel="stylesheet"></=>
+    <link href="assets/css/style.css" rel="stylesheet"></link>
     <title>Ambi-Pok&eacute;Dex-trous</title>
 </head>
 <body>
@@ -44,7 +44,16 @@
             <input list="pokemonNames" class="row mb-4" type="search" id="searchPokemans" placeholder="Enter a Pokémon name...">
             <!-- over 1000 names populated dynamically from pokemon.txt into options tag -->
             <datalist id="pokemonNames"></datalist>
-            <button class="row btn btn-dark" for="pokeForm" type="button" onclick="createCardDisplay()">Load That Pok&eacute;Card</button>
+            <div class="container-fluid" title="Find the pokemon name in the list or you will be unable search for it!">
+                <button
+                    class="row btn btn-dark"
+                    for="pokeForm"
+                    type="button"
+                    onclick="fetchAndFeedDataToFunction(getTargetEndPointBySearchbar() , (pokeData) => createCardDisplay(pokeData))"
+                    id="searchButton"
+                    disabled
+                >Load That Pok&eacute;Card</button>
+            </div>
         </form>
             
         <div class="row col-md-6 col-10 mx-auto justify-content-center h-auto" id="pokeCardContainer">
@@ -59,8 +68,6 @@
                 </figure>
             </div>
         </div>
-
-        <script src="scripts/asyncFetch.js"></script>
     </div>
     <div class="position-absolute top-0 w-100 h-100 d-none" id="fetchError" style="backdrop-filter: blur(5px);">
         <img class="img-fluid h-auto z-3 mx-auto" src="assets/img/pngfind.com-derp-png-1106212_fetchError.png" id="loadingError">
