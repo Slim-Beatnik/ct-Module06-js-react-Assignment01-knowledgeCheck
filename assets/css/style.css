@@ -19,6 +19,7 @@ body {
 .card img {
     width: 100%;
     border-radius: 5px;
+    mix-blend-mode: multiply;
 }
 input {
     background-color: #2b2d31;
